@@ -1,1 +1,7 @@
 project_id = "hlewejtogcgwmfrtkqef"
+
+[functions.score-resume]
+verify_jwt = true
+
+[functions.generate-answer]
+verify_jwt = true
