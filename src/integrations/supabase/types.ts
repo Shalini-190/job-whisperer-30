@@ -14,11 +14,352 @@ export type Database = {
   }
   public: {
     Tables: {
+      education: {
+        Row: {
+          created_at: string | null
+          degree: string
+          end_date: string | null
+          field_of_study: string | null
+          id: string
+          institution: string
+          start_date: string | null
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          degree: string
+          end_date?: string | null
+          field_of_study?: string | null
+          id?: string
+          institution: string
+          start_date?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          degree?: string
+          end_date?: string | null
+          field_of_study?: string | null
+          id?: string
+          institution?: string
+          start_date?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "education_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       job: {
         Row: {}
         Insert: {}
         Update: {}
         Relationships: []
+      }
+      job_applications: {
+        Row: {
+          application_url: string | null
+          applied_date: string | null
+          company_name: string
+          created_at: string | null
+          id: string
+          job_description: string | null
+          notes: string | null
+          position_title: string
+          status: string | null
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          application_url?: string | null
+          applied_date?: string | null
+          company_name: string
+          created_at?: string | null
+          id?: string
+          job_description?: string | null
+          notes?: string | null
+          position_title: string
+          status?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          application_url?: string | null
+          applied_date?: string | null
+          company_name?: string
+          created_at?: string | null
+          id?: string
+          job_description?: string | null
+          notes?: string | null
+          position_title?: string
+          status?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "job_applications_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string | null
+          email: string | null
+          full_name: string | null
+          github_url: string | null
+          id: string
+          linkedin_url: string | null
+          location: string | null
+          phone: string | null
+          portfolio_url: string | null
+          summary: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          github_url?: string | null
+          id: string
+          linkedin_url?: string | null
+          location?: string | null
+          phone?: string | null
+          portfolio_url?: string | null
+          summary?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string | null
+          full_name?: string | null
+          github_url?: string | null
+          id?: string
+          linkedin_url?: string | null
+          location?: string | null
+          phone?: string | null
+          portfolio_url?: string | null
+          summary?: string | null
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      resumes: {
+        Row: {
+          file_name: string
+          file_path: string
+          file_size: number | null
+          id: string
+          uploaded_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          file_name: string
+          file_path: string
+          file_size?: number | null
+          id?: string
+          uploaded_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          file_name?: string
+          file_path?: string
+          file_size?: number | null
+          id?: string
+          uploaded_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "resumes_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      scoring_results: {
+        Row: {
+          application_id: string | null
+          created_at: string | null
+          id: string
+          insights: Json | null
+          match_score: number | null
+          missing_keywords: string[] | null
+          resume_id: string | null
+          user_id: string | null
+        }
+        Insert: {
+          application_id?: string | null
+          created_at?: string | null
+          id?: string
+          insights?: Json | null
+          match_score?: number | null
+          missing_keywords?: string[] | null
+          resume_id?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          application_id?: string | null
+          created_at?: string | null
+          id?: string
+          insights?: Json | null
+          match_score?: number | null
+          missing_keywords?: string[] | null
+          resume_id?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "scoring_results_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "job_applications"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "scoring_results_resume_id_fkey"
+            columns: ["resume_id"]
+            isOneToOne: false
+            referencedRelation: "resumes"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "scoring_results_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      skills: {
+        Row: {
+          created_at: string | null
+          id: string
+          proficiency: string | null
+          skill_name: string
+          user_id: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          id?: string
+          proficiency?: string | null
+          skill_name: string
+          user_id?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          id?: string
+          proficiency?: string | null
+          skill_name?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "skills_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      tailored_answers: {
+        Row: {
+          answer: string
+          application_id: string | null
+          created_at: string | null
+          id: string
+          question: string
+          user_id: string | null
+        }
+        Insert: {
+          answer: string
+          application_id?: string | null
+          created_at?: string | null
+          id?: string
+          question: string
+          user_id?: string | null
+        }
+        Update: {
+          answer?: string
+          application_id?: string | null
+          created_at?: string | null
+          id?: string
+          question?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tailored_answers_application_id_fkey"
+            columns: ["application_id"]
+            isOneToOne: false
+            referencedRelation: "job_applications"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "tailored_answers_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      work_experiences: {
+        Row: {
+          company: string
+          created_at: string | null
+          description: string | null
+          end_date: string | null
+          id: string
+          is_current: boolean | null
+          position: string
+          start_date: string
+          user_id: string | null
+        }
+        Insert: {
+          company: string
+          created_at?: string | null
+          description?: string | null
+          end_date?: string | null
+          id?: string
+          is_current?: boolean | null
+          position: string
+          start_date: string
+          user_id?: string | null
+        }
+        Update: {
+          company?: string
+          created_at?: string | null
+          description?: string | null
+          end_date?: string | null
+          id?: string
+          is_current?: boolean | null
+          position?: string
+          start_date?: string
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "work_experiences_user_id_fkey"
+            columns: ["user_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {
