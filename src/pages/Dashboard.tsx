@@ -45,9 +45,14 @@ const Dashboard = () => {
 
   return (
     <SidebarProvider>
-      <div className="min-h-screen flex w-full bg-background">
+      <div className="min-h-screen flex w-full relative">
+        {/* Subtle background effects */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/20 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-accent-foreground/20 rounded-full blur-3xl" />
+        </div>
         <AppSidebar />
-        <main className="flex-1 overflow-auto">
+        <main className="flex-1 overflow-auto relative z-10">
           <header className="sticky top-0 z-40 border-b bg-card/80 backdrop-blur-sm">
             <div className="flex h-16 items-center gap-4 px-6">
               <SidebarTrigger />
