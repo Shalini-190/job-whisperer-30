@@ -1,73 +1,138 @@
-# Welcome to your Lovable project
+Job Whisperer 3.0 – AI-Powered Job Application Assistant
+Overview
 
-## Project info
+Job Whisperer 3.0 is an AI-driven platform designed to streamline the job application process. It acts as a personal AI co-pilot to help users land their dream job efficiently by automating repetitive tasks, analyzing resumes, and generating tailored responses for applications.
 
-**URL**: https://lovable.dev/projects/5b0d52dc-02d2-478e-b053-a67b888c5f83
+This hybrid project consists of:
 
-## How can I edit this code?
+Web Application – Frontend built with React + Vite + TypeScript + Tailwind + shadcn, hosted on Render.
 
-There are several ways of editing your application.
+Autofill Agent (Browser Extension) – Securely stores user profile information to automatically fill application forms across websites.
 
-**Use Lovable**
+Key Features
+1. Autofill Agent (Browser Extension)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/5b0d52dc-02d2-478e-b053-a67b888c5f83) and start prompting.
+Securely stores a user's profile: name, contact info, work history, education, etc.
 
-Changes made via Lovable will be committed automatically to this repo.
+Automatically fills out job application forms on different websites.
 
-**Use your preferred IDE**
+Supports Chrome & Edge browsers.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+Configurable via a local settings JSON or UI within the extension.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+2. Resume-to-JD Scoring
 
-Follow these steps:
+Compares uploaded resumes with a job description (JD).
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Generates a match score to quantify fit for the role.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+Offers actionable recommendations to optimize the resume for the specific JD.
 
-# Step 3: Install the necessary dependencies.
-npm i
+3. Tailored Answer Generator
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+Creates high-quality, personalized answers to common application questions such as:
+
+"Why are you a good fit for this role?"
+
+"What is your biggest strength?"
+
+4. Application Dashboard
+
+Tracks the status of user applications in a single view:
+
+Not Submitted, Submitted, Initial Response Received, Interview Requested, Rejected, etc.
+
+Tech Stack
+Component	Technology
+Frontend	React, TypeScript, Vite, Tailwind, shadcn-ui
+State & Data	React Query, Supabase (cloud backend)
+Forms & Validation	React Hook Form, Zod
+Charts & UI	Recharts, Lucide React
+Extension	Chrome Extension APIs, JS, HTML, CSS
+Hosting	Render (Static Site)
+Setup & Local Development
+Web App
+
+Clone the repository:
+
+git clone https://github.com/Shalini-190/job-whisperer-30.git
+cd job-whisperer-30
+
+
+Install dependencies:
+
+npm install
+
+
+Set up environment variables
+Create a .env file at the root with your Supabase credentials:
+
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_ANON_KEY=your-anon-key
+
+
+Run development server:
+
 npm run dev
-```
 
-**Edit a file directly in GitHub**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+Open http://localhost:8080
+ to view locally.
 
-**Use GitHub Codespaces**
+Build for production:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+npm run build
 
-## What technologies are used for this project?
 
-This project is built with:
+The build output will be in the dist folder.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+Autofill Extension
 
-## How can I deploy this project?
+Navigate to the extension/ folder in the repo.
 
-Simply open [Lovable](https://lovable.dev/projects/5b0d52dc-02d2-478e-b053-a67b888c5f83) and click on Share -> Publish.
+Open Chrome and go to chrome://extensions.
 
-## Can I connect a custom domain to my Lovable project?
+Enable Developer Mode.
 
-Yes, you can!
+Click Load unpacked and select the extension/ folder.
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+The extension will now appear in the browser toolbar and can fill forms automatically based on the saved user profile.
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Deployment on Render (Web App)
+
+Go to Render
+ → New + → Static Site.
+
+Connect your GitHub repository (job-whisperer-30).
+
+Configure:
+
+Branch: main
+
+Build Command: npm run build
+
+Publish Directory: dist
+
+Node Version: 18+
+
+Add environment variables (Supabase credentials).
+
+Click Create Static Site → Render will build and publish automatically.
+
+Note: The web app connects directly to Supabase via @supabase/supabase-js, so no separate backend server is needed.
+
+Future Enhancements
+
+Advanced NLP-based resume scoring and job-fit suggestions.
+
+AI-driven interview preparation tips.
+
+User authentication & profile management.
+
+Notifications for application status updates.
+
+Publishing the Autofill Agent on the Chrome Web Store for wider use.
+
+License
+
+This project is open-source and available under the MIT License.
