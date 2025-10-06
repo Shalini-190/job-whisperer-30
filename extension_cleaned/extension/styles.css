@@ -1,0 +1,233 @@
+/* JobWhisperer AI Autofill Extension - Content Styles */
+
+/* Autofill indicator styles */
+.jobwhisperer-autofill-indicator {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  z-index: 10000;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.jobwhisperer-autofill-indicator.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.jobwhisperer-autofill-indicator.success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.jobwhisperer-autofill-indicator.error {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+}
+
+.jobwhisperer-autofill-indicator.warning {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+/* Highlight filled fields */
+.jobwhisperer-autofilled {
+  background-color: rgba(102, 126, 234, 0.1) !important;
+  border: 2px solid rgba(102, 126, 234, 0.3) !important;
+  transition: all 0.3s ease;
+}
+
+.jobwhisperer-autofilled:focus {
+  border-color: #667eea !important;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1) !important;
+}
+
+/* Autofill button overlay */
+.jobwhisperer-autofill-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.jobwhisperer-autofill-button.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.jobwhisperer-autofill-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(102, 126, 234, 0.4);
+}
+
+.jobwhisperer-autofill-button:active {
+  transform: translateY(0);
+}
+
+/* Form detection overlay */
+.jobwhisperer-form-detected {
+  position: relative;
+}
+
+.jobwhisperer-form-detected::before {
+  content: "🎯 JobWhisperer AI Ready";
+  position: absolute;
+  top: -30px;
+  left: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  z-index: 1000;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.jobwhisperer-form-detected:hover::before {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Loading spinner */
+.jobwhisperer-loading {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: jobwhisperer-spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes jobwhisperer-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Success checkmark */
+.jobwhisperer-success {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.jobwhisperer-success::before {
+  content: "✓";
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+/* Error indicator */
+.jobwhisperer-error {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.jobwhisperer-error::before {
+  content: "✗";
+  color: white;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+/* Tooltip styles */
+.jobwhisperer-tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  z-index: 10001;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: all 0.2s ease;
+}
+
+.jobwhisperer-tooltip.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .jobwhisperer-autofill-indicator {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    text-align: center;
+  }
+  
+  .jobwhisperer-autofill-button {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    text-align: center;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .jobwhisperer-autofilled {
+    background-color: rgba(102, 126, 234, 0.2) !important;
+    border-color: rgba(102, 126, 234, 0.4) !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .jobwhisperer-autofill-indicator,
+  .jobwhisperer-autofill-button,
+  .jobwhisperer-tooltip {
+    display: none !important;
+  }
+}
+
+/* Accessibility improvements */
+.jobwhisperer-autofilled:focus {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* Animation for field highlighting */
+@keyframes jobwhisperer-highlight {
+  0% { background-color: rgba(102, 126, 234, 0.1); }
+  50% { background-color: rgba(102, 126, 234, 0.3); }
+  100% { background-color: rgba(102, 126, 234, 0.1); }
+}
+
+.jobwhisperer-autofilled.highlight {
+  animation: jobwhisperer-highlight 1s ease-in-out;
+}
